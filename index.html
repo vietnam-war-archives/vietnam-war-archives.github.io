@@ -38,6 +38,8 @@
     function closeModal(){document.getElementById('modal').style.display='none'}
     function toggleMusic(){alert('To add music: put an MP3 link inside the audio source src="". Use only copyright-free music.')} 
     document.getElementById('counter').innerText=String(Math.floor(Math.random()*9000)+1000).padStart(6,'0');renderCards();
+    document.addEventListener('click', function(e){const el = e.target;const bg = getComputedStyle(el).backgroundImage;if(el.parentElement && el.parentElement.classList.contains('gallery') && bg !== 'none'){const url = bg.slice(5,-2);document.getElementById('lightboxImg').src = url;document.getElementById('lightbox').style.display='flex';}});function closeLightbox(){document.getElementById('lightbox').style.display='none';}
   </script>
+  <div id="lightbox" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:9999;align-items:center;justify-content:center;"><span onclick="closeLightbox()" style="position:absolute;top:20px;right:30px;font-size:40px;color:white;cursor:pointer;">×</span><img id="lightboxImg" style="max-width:95%;max-height:95%;"></div>
 </body>
 </html>
